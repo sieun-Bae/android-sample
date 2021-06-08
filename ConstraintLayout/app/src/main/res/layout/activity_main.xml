@@ -1,16 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_gravity="clip_horizontal"
+    android:gravity="center_horizontal|left"
     android:orientation="vertical">
 
     <Button
         android:id="@+id/button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="113dp"
+        android:layout_height="81dp"
         android:layout_gravity="center_horizontal"
-        android:text="시작1" />
+        android:layout_margin="50dp"
+        android:background="#000000"
+        android:gravity="clip_vertical|left"
+        android:paddingLeft="50dp"
+        android:text="시작1"
+        android:textColor="@color/white"
+        app:backgroundTint="#000000" />
 
     <Button
         android:id="@+id/button2"
