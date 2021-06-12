@@ -12,6 +12,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Comment;
 
+import java.util.ArrayList;
+
 public class MainActivity extends AppCompatActivity {
 
     TextView likeCntView;
@@ -25,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //좋아요 버튼
         likeBtn = (Button) findViewById(R.id.likeBtn);
         likeBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -41,33 +44,49 @@ public class MainActivity extends AppCompatActivity {
 
         likeCntView = (TextView) findViewById(R.id.likeCntView);
 
+        //ListView 추가
         ListView listView = (ListView) findViewById(R.id.listView);
         CommentAdapter adapter = new CommentAdapter();
+
+        adapter.addItem(new CommentItem("bae101**", "적당히 재밌다. 오랜만에 잠 안오는 영화 봤네요."));
+        adapter.addItem(new CommentItem("bae102**", "적당히 재밌다. 오랜만에 잠 안오는 영화 봤네요."));
+
         listView.setAdapter(adapter);
     }
 
     class CommentAdapter extends BaseAdapter {
+        ArrayList<CommentItem> items = new ArrayList<CommentItem>();
+
+        //사용자 정의 메소드
+        public void addItem(CommentItem item) {
+            items.add(item);
+        }
         @Override
         public int getCount() {
-            return 0;
+            return items.size();
         }
 
         @Override
         public Object getItem(int position) {
-            return null;
+            return items.get(position);
         }
 
         @Override
         public long getItemId(int position) {
-            return 0;
+            return position;
         }
 
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            return null;
+            CommentItemView view = new CommentItemView(getApplicationContext());
+
+            CommentItem item = items.get(position);
+            view.setUserID(item.getUserID());
+            view.setComment(item.getComment());
+
+            return view;
         }
     }
-
 
     public void incrLikeCnt() {
         likeCnt += 1;

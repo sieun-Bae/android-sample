@@ -20,9 +20,8 @@ import org.w3c.dom.Text;
  */
 public class CommentItemView extends LinearLayout {
     TextView userID;
-    TextView comment;
-    TextView minuteWritten;
-    
+    TextView userComment;
+
     public CommentItemView(Context context) {
         super(context);
         init(context);
@@ -38,6 +37,15 @@ public class CommentItemView extends LinearLayout {
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.comment_item_view, this, true);
 
+        userID = (TextView) findViewById(R.id.userID);
+        userComment = (TextView) findViewById(R.id.comment);
+    }
 
+    public void setUserID(String id) {
+        userID.setText(id);
+    }
+
+    public void setComment(String comment) {
+        userComment.setText(comment);
     }
 }
