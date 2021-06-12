@@ -4,10 +4,25 @@ import android.content.Context;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 
+import org.w3c.dom.Text;
+
+
+/*
+    String userID;
+    int minuteWritten;
+    int score;
+    String comment;
+    int recommend;
+ */
 public class CommentItemView extends LinearLayout {
+    TextView userID;
+    TextView comment;
+    TextView minuteWritten;
+    
     public CommentItemView(Context context) {
         super(context);
         init(context);
@@ -22,5 +37,7 @@ public class CommentItemView extends LinearLayout {
         //inflation
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         inflater.inflate(R.layout.comment_item_view, this, true);
+
+
     }
 }
