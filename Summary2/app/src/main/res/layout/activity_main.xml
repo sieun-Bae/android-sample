@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="#FF888888"
+    android:orientation="horizontal">
 
     <Button
         android:id="@+id/likeBtn"
@@ -14,11 +16,11 @@
         android:id="@+id/likeCntView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="15"
         android:layout_gravity="center_vertical"
-        android:textColor="@color/white"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:text="15"
+        android:textColor="@color/white" />
 
     <Button
         android:id="@+id/unlikeBtn"
@@ -31,10 +33,16 @@
         android:id="@+id/unLikeCntView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1"
         android:layout_gravity="center_vertical"
-        android:textColor="@color/white"
         android:layout_marginLeft="5dp"
-        android:layout_marginRight="20dp" />
+        android:layout_marginRight="20dp"
+        android:text="1"
+        android:textColor="@color/white" />
+
+    <ListView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
 
 </LinearLayout>
