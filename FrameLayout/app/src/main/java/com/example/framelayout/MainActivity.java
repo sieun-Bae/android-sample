@@ -22,6 +22,9 @@ public class MainActivity extends AppCompatActivity {
         imageView2 = (ImageView)findViewById(R.id.imageView2);
     }
 
+    public void onButtonClicked(View v) {
+
+    }
     public void onButton1Clicked(View v) {
         index += 1;
         if (index > 1) {

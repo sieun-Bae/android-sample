@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.example.summary2.CommentItem;
+import com.example.summary2.R;
+
 import org.w3c.dom.Comment;
 
 import java.util.ArrayList;
