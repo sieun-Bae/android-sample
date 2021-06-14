@@ -14,7 +14,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="42dp"
-        android:onClick="onButton1Clicked"
+        android:onClick="onButtonClicked"
         android:text="이미지 바꾸기"
         app:layout_constraintBottom_toTopOf="@+id/frameLayout"
         app:layout_constraintStart_toStartOf="parent"
@@ -43,4 +43,12 @@
             android:visibility="invisible"
             app:srcCompat="@drawable/image2" />
     </FrameLayout>
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="asdfghjkl"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="709dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
