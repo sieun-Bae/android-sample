@@ -30,9 +30,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
 
 
+
                 Intent intent2 = new Intent();
                 //2. 객체가 아닌 문자열로 액티비티를 지정하는 방법
-                ComponentName name = new ComponentName("org.example.callintent", "org.example.callintent.MenuActivity");
+                ComponentName name = new ComponentName("com.example.callintent", "com.example.callintent.MenuActivity");
                 intent2.setComponent(name);
                 startActivity(intent2);
             }
