@@ -1,0 +1,2 @@
+rootProject.name = "FragmentViewer"
+include ':app'
