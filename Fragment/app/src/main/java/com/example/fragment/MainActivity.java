@@ -37,4 +37,12 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
+    public void onFragmentChange(int index) {
+        if (index == 0) { //MainFragment
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment1).commit();
+        } else if (index == 1) { //MenuFragment
+            getSupportFragmentManager().beginTransaction().replace(R.id.container, fragment2).commit();
+        }
+    }
 }
