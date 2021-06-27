@@ -1,36 +1,41 @@
 package com.example.server;
 
-import androidx.appcompat.app.AppCompatActivity;
-
+import android.app.Service;
 import android.content.Intent;
-import android.os.Bundle;
+import android.os.IBinder;
 import android.util.Log;
-import android.view.View;
-import android.widget.Button;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-public class MainActivity extends AppCompatActivity {
+public class ChatService extends Service {
+    public ChatService() {
+
+    }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Button button = (Button) findViewById(R.id.button);
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                //ServerThread thread = new ServerThread();
-                //thread.start();
-                Intent intent = new Intent(getApplicationContext(), ChatService.class);
-                startService(intent);
-            }
-        });
+    public void onCreate() {
+        super.onCreate();
+        ServerThread thread = new ServerThread();
+        thread.start();
     }
-    /*
+
+    @Override
+    public int onStartCommand(Intent intent, int flags, int startId) {
+        return super.onStartCommand(intent, flags, startId);
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public IBinder onBind(Intent intent) {
+        throw new UnsupportedOperationException("Not yet implemented");
+    }
     class ServerThread extends Thread {
         public void run() {
             int port = 5001;
@@ -54,5 +59,5 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-    }*/
+    }
 }
