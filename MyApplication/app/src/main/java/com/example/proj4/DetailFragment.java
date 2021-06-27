@@ -1,6 +1,5 @@
 package com.example.proj4;
 
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -15,8 +14,8 @@ import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import static android.app.Activity.RESULT_CANCELED;
-import static android.app.Activity.RESULT_OK;
+import static androidx.appcompat.app.AppCompatActivity.RESULT_CANCELED;
+import static androidx.appcompat.app.AppCompatActivity.RESULT_OK;
 
 public class DetailFragment extends Fragment {
     public static DetailFragment newInstance(){
