@@ -4,6 +4,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -11,6 +13,8 @@ import android.widget.ProgressBar;
 public class MainActivity extends AppCompatActivity {
     ProgressBar progressBar;
     Handler handler = new Handler(); //post method 이용할 예정
+    CompletionThread completionThread;
+    String msg = "";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -32,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
                 //thread.start();
             }
         });
+
+        completionThread = new CompletionThread();
+        completionThread.start();
     }
 
     class ProgressThread extends Thread {
@@ -54,6 +61,21 @@ public class MainActivity extends AppCompatActivity {
                     Thread.sleep(200);
                 } catch(Exception e) {}
             }
+            completionThread.completionHandler.post(new Runnable() {
+                public void run() {
+                    msg = "OK"; //ok를 새로운 completion thread로 보냅니다.
+                    Log.d("MainActivity", "메시지: "+msg);
+                }
+            });
+
+        }
+    }
+    class CompletionThread extends Thread {
+        public Handler completionHandler = new Handler();
+
+        public void run() {
+            Looper.prepare();
+            Looper.loop(); //스레드는 대기상태
         }
     }
 }
