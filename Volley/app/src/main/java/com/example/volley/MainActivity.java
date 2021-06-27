@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -21,12 +22,14 @@ import java.util.Map;
 public class MainActivity extends AppCompatActivity {
 
     TextView textView;
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
         textView = (TextView) findViewById(R.id.textView);
+        imageView = (ImageView) findViewById(R.id.imageView);
 
         Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -35,10 +38,26 @@ public class MainActivity extends AppCompatActivity {
                 sendRequest();
             }
         });
+
+        Button button2 = (Button) findViewById(R.id.button2);
+        button2.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                sendImageRequest();
+            }
+        });
+
         if (AppHelper.requestQueue == null) { //한번만 만들도록
             AppHelper.requestQueue = Volley.newRequestQueue(getApplicationContext());
         }
     }
+
+    public void sendImageRequest() {
+        String url = "https://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode=10073";
+        ImageLoadTask task = new ImageLoadTask(url, imageView);
+        task.execute();
+    }
+
     public void sendRequest() {
         //String url = "http://www.google.co.kr";
         String url = "http://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=f5eef3421c602c6cb7ea224104795888&targetDt=20120101";
