@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sendImageRequest() {
-        String url = "https://movie.naver.com/movie/bi/mi/photoViewPopup.nhn?movieCode=10073";
+        String url = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2F736x%2F0a%2F14%2F01%2F0a14019675f665cbf7306a7f54f9b7e7.jpg&type=sc960_832";
         ImageLoadTask task = new ImageLoadTask(url, imageView);
         task.execute();
     }
