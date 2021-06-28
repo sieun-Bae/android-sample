@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.AuthFailureError;
@@ -23,6 +24,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView textView;
     ImageView imageView;
+    ProgressBar progressBar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,6 +33,7 @@ public class MainActivity extends AppCompatActivity {
 
         textView = (TextView) findViewById(R.id.textView);
         imageView = (ImageView) findViewById(R.id.imageView);
+        progressBar = (ProgressBar) findViewById(R.id.progressBar);
 
         Button button = (Button) findViewById(R.id.button);
         button.setOnClickListener(new View.OnClickListener() {
@@ -54,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void sendImageRequest() {
         String url = "https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2F736x%2F0a%2F14%2F01%2F0a14019675f665cbf7306a7f54f9b7e7.jpg&type=sc960_832";
-        ImageLoadTask task = new ImageLoadTask(url, imageView);
+        ImageLoadTask task = new ImageLoadTask(url, imageView, progressBar);
         task.execute();
     }
 
