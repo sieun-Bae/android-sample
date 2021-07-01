@@ -85,7 +85,8 @@ public class MainActivity extends AppCompatActivity {
         database = openOrCreateDatabase(databaseName, MODE_PRIVATE, null);
         if (database != null) {
             println("데이터베이스 오픈됨.");
-        }*/
+        } 
+	*/
 
         DatabaseHelper helper = new DatabaseHelper(this, databaseName, null, 2);
         database = helper.getWritableDatabase(); //쓰기권한 조건 분기를 하면 에러없이 실행할 수 있을 겁니다.
