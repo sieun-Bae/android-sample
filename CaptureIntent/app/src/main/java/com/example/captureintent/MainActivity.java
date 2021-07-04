@@ -56,18 +56,6 @@ public class MainActivity extends AppCompatActivity {
         startActivityForResult(intent, 101);
     }
 
-    public void capture_surface() {
-        surfaceView.capture(new Camera.PictureCallback() {
-
-            @Override
-            public void onPictureTaken(byte[] data, Camera camera) {
-                
-            }
-        });
-
-        }
-    }
-
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable @org.jetbrains.annotations.Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
