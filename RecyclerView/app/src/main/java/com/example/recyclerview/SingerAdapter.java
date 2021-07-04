@@ -5,6 +5,7 @@ import android.text.Layout;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +18,11 @@ import java.util.ArrayList;
 public class SingerAdapter extends RecyclerView.Adapter<SingerAdapter.ViewHolder> {
     Context context;
     ArrayList<SingerItem> items = new ArrayList<SingerItem>(); // 데이터 저장
+
+    OnItemClickListener listener;
+    public static interface OnItemClickListener {
+        public void onItemClick(ViewHolder holder, View view, int position);
+    }
 
     //constructor
     public SingerAdapter(Context context) {
@@ -42,6 +48,8 @@ public class SingerAdapter extends RecyclerView.Adapter<SingerAdapter.ViewHolder
     public void onBindViewHolder(@NonNull @NotNull SingerAdapter.ViewHolder holder, int position) {
         SingerItem item = items.get(position);
         holder.setItem(item);
+
+        holder.setOnItemClickListener(listener);
     }
 
     public void addItem(SingerItem item) {
@@ -56,16 +64,36 @@ public class SingerAdapter extends RecyclerView.Adapter<SingerAdapter.ViewHolder
         return items.get(position);
     }
 
-    static class ViewHolder extends RecyclerView.ViewHolder { // 아이템을 뷰에 담는 역할.
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        this.listener = listener;
+    }
 
+
+    static class ViewHolder extends RecyclerView.ViewHolder { // 아이템을 뷰에 담는 역할.
         TextView textView;
         TextView textView2;
+
+        OnItemClickListener listener;
 
         // constructor
         public ViewHolder(@NonNull @org.jetbrains.annotations.NotNull View itemView) {
             super(itemView);
             textView = (TextView) itemView.findViewById(R.id.textView);
             textView2 = (TextView) itemView.findViewById(R.id.textView2);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    int position = getAdapterPosition();
+                    if (listener != null) {
+                        listener.onItemClick(ViewHolder.this, v, position);
+                    }
+                }
+            });
+        }
+
+        public void setOnItemClickListener(OnItemClickListener listener) {
+            this.listener = listener;
         }
 
         public void setItem(SingerItem item) {
